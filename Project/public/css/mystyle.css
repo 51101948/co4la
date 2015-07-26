@@ -1,0 +1,270 @@
+body {
+	background-color: #ccccd7;
+}
+
+.container-fluid {
+	background-color: white;
+}
+
+.img-cover {
+	width: 100%;
+	height: 200px;
+	margin-bottom: 10px;
+	border-radius: 10px;
+}
+
+.img-cover img {
+	border-radius: 10px;
+}
+
+img {
+	width: 100%;
+	height: 100%;
+}
+
+a {
+	text-decoration: none;
+	color: #8af98a;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #3cc83c;
+}
+
+
+.navbar-default{
+	background: linear-gradient(#8af98a,#056405);
+	border-radius: 10px;
+}
+
+.nav-right-li a span {
+	height: 100%;
+	display: block;
+	vertical-align: middle;
+}
+
+.navbar-default span {
+	display: block;
+	vertical-align: middle;
+	color: white;
+	font-size: 20px;
+	float: left;
+	color: white;
+}
+
+.navbar-header button {
+	width: 44px;
+	height: auto;
+}
+
+
+.side-bar {
+	/*border-right: solid 1px #b6b6c1;*/
+	padding: 0px;
+}
+
+.categories, .search {
+	margin-bottom: 15px;
+	width: 100%;
+	padding: 0px 5px 0px 5px;
+	float: left;
+	/*background-color: #777;
+	border-radius: 10px;
+	*/
+	border-bottom: 1px solid #b6b6c1;
+}
+
+.search-label, .categories-label{
+	padding: 5px 0px;
+	margin-bottom: 7px;
+	background-color: #3cc83c;
+	box-shadow: 0px 3px 2px #ccccd7;
+	border-radius: 10px;
+	text-align: center;
+	color: white;
+	/*border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;*/
+}
+
+.my-btn {
+	/*float: right;*/
+	margin: 0px auto;
+	background-color: #8af98a;
+}
+
+.my-btn:hover {
+	background-color: #056405;
+	color: white;
+}
+
+.search-label span, .categories-label span, .pager span {
+	display: block;
+	vertical-align: middle;
+}
+
+.search form {
+	margin: 0px 5px;
+	padding-top: 5px;
+	text-align: center;
+}
+
+.search form * {
+	margin: 5px 0px;
+}
+
+ul {
+	list-style-type: none;
+	padding: 5px;
+}
+
+.categories li {
+	font-size: 18px;
+	color: #e5e5ed;
+	margin-bottom: 3px;
+	border-bottom: 1px solid #ccccd7;
+	border-radius: 5px;
+	padding: 1px 4px;
+}
+
+.main {
+	padding-right: 0px;
+	float: right;
+}
+
+.product-name, .product-price {
+	display: block;
+	text-align: center;
+}
+
+.product-item {
+	padding: 7px;
+}
+
+.product-info{
+	height: 213px;
+	padding: 0px;
+	border-right: 1px solid #3cc83c;
+	border-bottom:1px solid #3cc83c;
+	border-radius: 10px;
+	margin: 0px 2px 4px 2px;
+	box-shadow: 1px 2px 2px #ccccd7;
+}
+
+.product-info span{
+	color: #056405;
+}
+
+.product-info span:hover{
+	color: #042f04;
+}
+
+.pager {
+	width: 100%;
+	padding: 5px;
+	display: block;
+}
+
+/*.product-name span, .product-price span {
+	display: block; 
+	overflow: hidden; 
+	word-wrap: 
+	break-word; 
+	text-overflow: ellipsis;
+}*/
+
+/*.product-min-info{
+	overflow: hidden;
+}
+
+.product-min-info div{
+	overflow: hidden;
+}*/
+
+.one-line {
+	white-space:nowrap;
+	display: block; 
+	overflow: hidden; 
+	word-wrap: break-word; 
+	text-overflow: ellipsis;
+}
+
+/*.one-line:after {
+        position:                   absolute;
+        display:                    block;
+        width:                      100%;
+        height:                     1em;
+        bottom:                     0px;
+        left:                       0px;
+}
+
+.one-line:before {
+    content:                    '...';
+    text-align:                 right;
+    position:                   absolute;
+    display:                    block;
+    width:                      2em;
+    height:                     1em;
+    bottom:                     1em;
+    right:                      20px;
+}*/
+
+.footer {
+	position: relative;
+	bottom: 0;
+	left: 0;
+	background-color: #0e380b;
+	height: 200px;
+}
+
+.login-form {
+	width: 50%;
+	padding: 10px;
+	border-radius: 7px;
+	border: 1px solid #3cc83c;
+	margin: 10px auto;
+	text-align: center;
+}
+
+.login-form input {
+	margin-bottom: 7px;
+}
+
+.show-message {
+	width: 50%;
+	padding: 10px;
+	border-radius: 7px;
+	margin: 10px auto;
+	text-align: center;
+	color: red;
+}
+
+.order-form {
+	margin-top: 10px;
+	/*border: 1px solid #3cc83c;
+	border-radius: 5px;*/
+}
+
+.order-form input {
+	margin-bottom: 5px;
+}
+.order-form button {
+	float: right;
+	/*margin: 0px auto;*/
+}
+
+.add-product-form input, .add-product-form select{
+	margin-bottom: 7px;
+}
+
+.add-product-form input.my-btn {
+	float: right;
+}
+
+.pagination span {
+	background-color: #8af98a;
+}
+
+.pagination span:hover {
+	background-color: #056405;
+}

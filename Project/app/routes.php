@@ -11,7 +11,23 @@
 |
 */
 
-Route::get('/', function()
+/*Route::get('/', function()
 {
 	return View::make('hello');
+});*/
+
+Route::get('/', array('uses' => 'ProductController@getAllProduct'));
+
+Route::get('/login', array('uses' => 'UserController@loginView'));
+Route::post('/login', array('uses' => 'UserController@login'));
+Route::get('/logout', array('uses' => 'UserController@logout'));
+
+Route::get('/product/detail/{id}', function($id){
+	return View::make('productdetail');
 });
+
+Route::get('/categories/{slug}', array('uses' => 'ProductController@getByCategory'));
+Route::post('/search', array('uses' => 'ProductController@getByQuery'));
+
+Route::get('/admin/new-product', array('uses' => 'ProductController@addProductView'));
+Route::post('/admin/new-product', array('uses' => 'ProductController@addProduct'));

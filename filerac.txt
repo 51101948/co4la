@@ -1,0 +1,47 @@
+<nav class="navbar navigation ">
+	<div class="nav-left navbar-header">
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	    </button>
+		<a href="/">
+			<span class="glyphicon glyphicon-home"> Home</span>
+		</a>
+	</div>
+	<div class="nav-right collapse navbar-collapse" id="nav-collapse">
+		<ul>
+		@if(!Auth::check())
+			<li><a href="/login"><span>Login</span></a></li>
+		@else
+			<li><a href="/new-product"><span>New Product</span></a></li>
+			<li><a href="/new-category"><span>New Category</span></a></li>
+			<li><a href="/logout"><span>Logout</span></a></li>
+		@endif
+		</ul>
+	</div>
+</nav>
+		<!-- <div>
+			<a href="/login">
+				<span>Login</span>
+			</a>
+		</div>
+	else
+		<div>
+			<div>
+				<a href="/new-category">
+					<span>New Category</span>
+				</a>
+			</div>
+			<div>
+				<a href="/new-product">
+					<span>New Product</span>
+				</a>
+			</div>
+			<div>
+				<a href="/logout">
+					<span>Logout</span>
+				</a>
+			</div>
+		</div> -->

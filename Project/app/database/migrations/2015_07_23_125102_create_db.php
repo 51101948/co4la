@@ -54,7 +54,7 @@ class CreateDb extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->string('slug');
-			$table->integer('category_id')->unsigned();
+			$table->integer('category_id')->unsigned()->nullable();
 			$table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
 			$table->float('price');
 			$table->timestamps();

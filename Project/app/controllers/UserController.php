@@ -2,85 +2,38 @@
 
 class UserController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 * GET /user
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
+	public function loginView() {
+		return View::make('layouts.login');
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /user/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
+	public function login(){
+		$auth = array('username' => Input::get('username'),
+					  'password' => Input::get('password'));
+
+		$rule = array('username' => 'required',
+			          'password' => 'required');
+
+		$validator = Validator::make($auth, $rule);
+
+		if($validator->passes()){
+			if(Auth::attempt($auth)){
+				return Redirect::to('/');
+			}
+			else {
+				\Session::flash('err_message', 'Thong tin dang nhap khong dung');
+				return Redirect::back()->withInput();
+			}
+		}
+		else {
+			\Session::flash('err_message', 'Thieu thong tin dang nhap');
+			return Redirect::back()->withInput();
+		}
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /user
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-	/**
-	 * Display the specified resource.
-	 * GET /user/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /user/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /user/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /user/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+	public function logout(){
+		if(Auth::check())
+			Auth::logout();
+		return Redirect::to('/');
 	}
 
 }
