@@ -1,4 +1,10 @@
+@font-face {
+	font-family: comic;
+	src: url(../fonts/comicsans/comic.ttf);
+}
+
 body {
+	font-family: comic;
 	background-color: #ccccd7;
 }
 
@@ -39,7 +45,6 @@ a:hover {
 }
 
 .nav-right-li a span {
-	height: 100%;
 	display: block;
 	vertical-align: middle;
 }
@@ -142,7 +147,7 @@ ul {
 }
 
 .product-info{
-	height: 213px;
+	/*height: 213px;*/
 	padding: 0px;
 	border-right: 1px solid #3cc83c;
 	border-bottom:1px solid #3cc83c;
@@ -267,4 +272,28 @@ ul {
 
 .pagination span:hover {
 	background-color: #056405;
+}
+
+.category-item, .user-item {
+	border-radius: 10px;
+	margin: 5px 0px 2px 0px;
+	padding: 5px;
+	border: 1px solid rgba(24, 52, 24, 0.77);
+}
+
+.order-info div{
+	margin-bottom: 10px;
+}
+
+.add-manager-form input {
+	margin-bottom: 8px;
+}
+
+/*.add-manager-form form {
+	margin-bottom: 8px;
+}*/
+
+.add-manager-form .my-btn {
+	float: right;
+	margin-top: 8px;
 }

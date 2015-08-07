@@ -2,7 +2,7 @@
 	$categories = Cate::all();
 ?>
 <div class="categories-label">
-	<span>Danh Muc</span>
+	<span>Danh mục</span>
 </div>
 <ul class="cate-list">
 	@foreach($categories as $category)

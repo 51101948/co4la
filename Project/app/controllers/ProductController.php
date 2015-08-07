@@ -9,6 +9,8 @@ class ProductController extends \BaseController {
 	}
 
 	public function addProduct(){
+		if(!Auth::check())
+			return Redirect::to('/login');
 		$success="Upload succeeded";
 		$missingImgs="Missing images";
 		$missingProInfo="Missing product infomation";
@@ -28,9 +30,10 @@ class ProductController extends \BaseController {
 				$product = Products::create($data);
 				$slug = CommonController::makeSlug("$product->id "."$product->name");
 				$product->slug = str_replace(' ', '-', $slug);
+				$product->slug = str_replace('/', '-', $product->slug);
 				$product->save();
 
-				$img_dir="image/";
+				$img_dir="images/";
 				/*upload file and save to db*/
 				$isOK=false;
 				foreach ($product_imgs as $image) {
@@ -41,12 +44,13 @@ class ProductController extends \BaseController {
 						$usable=false;
 						do {
 							$name=CommonController::genName(30);
-							$path=$img_dir.$name.".".$extension;
+							$name = $name.".".$extension;
+							$path=$img_dir.$name/*.".".$extension*/;
 							$abs_path = "/".$path;
 							if($this->imgUsableName($abs_path)){
 								Images::create(array('product_id' => $product->id, 'path' => $abs_path));
 								$usable=true;
-								$image->move("/".$img_dir, $name.".".$extension);
+								$image->move($img_dir, $name);
 							}
 						} while(!$usable);
 					}
@@ -106,5 +110,55 @@ class ProductController extends \BaseController {
 			$product->path = $img->path;
 		}
 		return View::make('gridproduct', compact('products'));
+	}
+
+	public function getBySlug($slug){
+		if(Auth::check())
+			return Redirect::to("/admin/edit/$slug");
+		$product = Products::where('slug', $slug)->first();
+		$img = Images::where('product_id', $product->id)->first();
+		$product->path = $img->path;
+		return View::make('productdetail', compact('product'));
+	}
+	
+	public function editProductView($slug){
+		$product = Products::where('slug', $slug)->first();
+		$img = Images::where('product_id', $product->id)->first();
+		$product->path = $img->path;
+		return View::make('layouts.partial.admin.product_detail', compact('product'));
+	}
+
+	public function editProduct($slug){
+		if(!Auth::check())
+			return Redirect::to('/login');
+		$product = Products::where('slug', $slug)->first();
+		$cate_slug = Input::get('category');
+		$category = Cate::where('slug', $cate_slug)->first();
+		if(!Input::has('name') && !Input::has('price') && $product->category_id == $category->id){
+			\Session::flash('message', 'Không có dữ liệu được cập nhật');
+			return Redirect::back();
+		}
+		$product->category_id = $category->id;
+		$product->save();
+		if(Input::has('name')){
+			$newName = Input::get('name');
+			$product->name = $newName;
+			$newSlug = CommonController::makeSlug("$product->id "."$product->name");
+			$product->slug = str_replace(' ', '-', $newSlug);
+		}
+		if(Input::has('price')){
+			$product->price = (int) Input::get('price');
+		}
+		$product->save();
+		\Session::flash('message', 'Thông tin sản phẩm đã được cập nhật');
+		return Redirect::to("/admin/edit/$product->slug");
+	}
+
+	public function deleteProduct($id){
+		if(!Auth::check())
+			return Redirect::to('/login');
+		$product = Products::where('id', $id)->first();
+		$product->delete();
+		return Redirect::to('/');
 	}
 }

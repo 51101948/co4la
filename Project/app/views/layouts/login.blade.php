@@ -1,5 +1,6 @@
 @extends('layouts.default')
 	@section('contents')
+	<div class="main col-xs-12 col-sm-12 col-md-12">
 		@if(Session::has('err_message'))
 			<div class="show-message">
 				<span>{{Session::get('err_message')}}</span>
@@ -14,4 +15,5 @@
 				<button type="submit" name="login" class="btn my-btn">Login</button>
 			</form>
 		</div>
+	</div>
 	@stop

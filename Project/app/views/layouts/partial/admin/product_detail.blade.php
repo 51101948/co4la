@@ -1,3 +1,13 @@
+<?php
+	$curr_cate = Cate::where('id', $product->category_id)->first();
+	$curr_slug = $curr_cate->slug;
+	$set = Cate::all();
+	$categories = array();
+	foreach ($set as $item) {
+		$tag=$item->name;
+		$categories = array_merge($categories, array($item->slug => $tag));
+	}
+?>
 @extends('homepage')
 @section('main')
 <div class="detail-left col-xs-12 col-sm-6 col-md-6">
@@ -17,16 +27,15 @@
 </div>
 <div class="detail-right col-xs-12 col-sm-6 col-md-6">
 	<div class="order-form">	
-		<form action="/new-order/{{$product->id}}" method="post">
-			<label for="fullname">Họ Tên</label>
-			<input type="text" id="fullname" name="fullname" class="form-control" placeholder="Tram Anh"></input>
-			<label for="phone">Số điện thoại</label>
-			<input class="form-control" type="text" name="phone" id="phone" onkeypress="validate(event)" placeholder="0905555555"></input>
-			<label for="quantity">Số lượng</label>
-			<input class="form-control" type="text" name="quantity" id="quantity" onkeypress="validate(event)" onkeyup="calTotal()" placeholder="1"></input>
-			<label for="total">Thành tiền (x1000 VND): </label>
-			<span id="total" name="total"></span><br>
-			<button class="btn my-btn" type="submit">Đặt hàng</button>
+		<form action="/admin/edit/{{$product->slug}}" method="post">
+			{{Form::label('category', 'Category')}}
+			{{Form::select('category', $categories, $curr_slug, array('class' => 'form-control'))}}
+			<label for="name">Tên sản phẩm</label>
+			<input type="text" id="name" name="name" class="form-control"></input>
+			<label for="price">giá tiền</label>
+			<input class="form-control" type="text" name="price" id="price" onkeypress="validate(event)" placeholder="x1000 VND"></input>
+			<button class="btn my-btn" type="submit">Cập nhật</button>
+			<a href="/admin/delete/product/{{$product->id}}" class="btn my-btn glyphicon glyphicon-trash" style="color: white; margin-right: 2px;"></a>
 		</form>
 	</div>
 	@if(Session::has('message'))

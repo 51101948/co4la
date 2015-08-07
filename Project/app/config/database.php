@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'co4la',
-			'username'  => 'root',
-			'password'  => 'root',
+			'database'  => 'u314549646_co4la',
+			'username'  => 'u314549646_root',
+			'password'  => 'co4laroot',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

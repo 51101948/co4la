@@ -7,23 +7,19 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            @if (!Auth::check())
-            <a class="navbar-brand" href="/"><span>Home</span></a>
-            @else
-            <a class="navbar-brand" href="/"><span>Home</span></a>
-            @endif
+            <a class="navbar-brand" href="/" style="padding: 0px 0px 0px 15px;"><img src="/images/logo.png" style="width: 50px; height: 50px; "></a>
         </div>
 
         <div class="collapse navbar-collapse col-xs-10 col-sm-10 col-md-10"  style="float:right; min-height: 50px; padding: 0px;" id="bs-example-navbar-collapse-1">
             <div class="nav-right" style="overflow: hidden; ">
                 <ul class="nav navbar-nav navbar-right" style="padding:0px; min-height:50px;">
                     @if (Auth::check())
-                    <li class="nav-right-li"><a href="/admin/categories"><span>Categories<span></a></li>
-                    <li class="nav-right-li"><a href="/admin/new-product"><span>New Product<span></a></li>
-                    <li class="nav-right-li"><a href="/admin/orders"><span>Orders<span></a></li>
-                    <li class="nav-right-li"><a href="/logout"><span>Logout<span></a></li>
+                    <li class="nav-right-li" style="max-height: 35px;"><a href="/admin/categories"><span>Danh mục<span></a></li>
+                    <li class="nav-right-li" style="max-height: 35px;"><a href="/admin/new-product"><span>Thêm hàng<span></a></li>
+                    <li class="nav-right-li" style="max-height: 35px;"><a href="/admin/list-orders"><span>Hóa đơn<span></a></li>
+                    <li class="nav-right-li" style="max-height: 35px;"><a href="/logout"><span>Logout<span></a></li>
                     @else
-                    <li class="nav-right-li"><a href="/login"><span>Login<span></a></li>
+                    <li class="nav-right-li" style="max-height: 35px;"><a href="/login"><span>Login<span></a></li>
                     @endif
                 </ul>
             </div>

@@ -17,7 +17,8 @@ class CommonController extends \BaseController {
 		  	'v'=>'V','w'=>'W','x'=>'X',
 	      	'y'=>'ý|ỳ|ỷ|ỹ|ỵ|Y|Ý|Ỳ|Ỷ|Ỹ|Ỵ',
 		  	'z'=>'Z',
-		  	'\ '=>'-'
+		  	' '=>'-',
+		  	'/'=>'-'
 		);
 		foreach ($unicode as $nonUni => $uni) {
 			$str = preg_replace("/($uni)/i", $nonUni, $str);
@@ -34,6 +35,23 @@ class CommonController extends \BaseController {
 	    }
 
     	return $key;
+	}
+
+	public static function needAuth(){
+		if(!Auth::check())
+			return Redirect::to('/login');
+	}
+
+	public function isOwner(){
+		if(!Auth::check())
+			return false;
+		$role_id = (int) Auth::user()->role_id;
+		if($role_id == 1){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 
 }
